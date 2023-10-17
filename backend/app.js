@@ -58,7 +58,7 @@ app.post(
   }),
   createUser,
 );
-
+/* */
 app.use(authChecker);
 
 app.use('/users', require('./routes/users'));
