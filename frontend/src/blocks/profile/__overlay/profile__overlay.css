@@ -1,0 +1,16 @@
+.profile__overlay {
+  position: absolute;
+  background: no-repeat url('../../../images/avapen.svg') rgba(0, 0, 0, 0.8);
+  background-position: center;
+  transition: opacity 0.2s linear;
+  opacity: 0;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border: none;
+}
+
+.profile__overlay:hover {
+  cursor: pointer;
+  opacity: 1;
+}

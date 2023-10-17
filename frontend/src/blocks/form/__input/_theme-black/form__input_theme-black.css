@@ -1,0 +1,9 @@
+.form__input_theme-black {
+  color: #fff;
+  background-color: black;
+  border-bottom: 1px solid #CCCCCC;
+  margin: 0 0 202px 0;
+}
+.form__input_theme-black:first-child {
+  margin: 50px 0 30px 0;
+}

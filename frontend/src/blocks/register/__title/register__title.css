@@ -1,0 +1,12 @@
+.register__title {
+  font-family: 'Inter', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.14;
+  color: #FFFFFF;
+  max-width: 450px;
+  text-align: center;
+  padding-top: 15px;
+  margin: 0;
+}
