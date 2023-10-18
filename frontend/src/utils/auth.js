@@ -1,5 +1,5 @@
 import checkRespone from './checkRespone';
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://igorkuznecov.nomoredomainsrocks.ru/api';
 
 export function register(password, email) {
   return fetch(`${BASE_URL}/signup`, {

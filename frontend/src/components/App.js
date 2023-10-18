@@ -107,8 +107,9 @@ function App() {
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getCards()])
       .then(([user, initialCards]) => {
+        const normalizedCards = initialCards.reverse()
         setCurrenUser(user);
-        setCards(initialCards);
+        setCards(normalizedCards);
       })
       .catch((err) => {
         console.log(`Catch ${err}`);

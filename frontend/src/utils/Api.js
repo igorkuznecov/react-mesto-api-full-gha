@@ -2,9 +2,7 @@
 
 class Api {
   constructor(config) {
-    (this._url = config.url),
-      (this._headers = config.headers),
-      (this._authorization = config.headers.authorization);
+    (this._url = config.url)
   }
 
   _request(url, options) {
@@ -24,7 +22,7 @@ class Api {
       method: 'GET',
       headers: {
         authorization: localStorage.getItem('jwt'),
-            'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
     });
   }
@@ -32,7 +30,10 @@ class Api {
   addCard(name, link) {
     return this._request(`${this._url}/cards`, {
       method: 'POST',
-      headers: this._headers,
+      headers: {
+        authorization: localStorage.getItem('jwt'),
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: name,
         link: link,
@@ -43,7 +44,10 @@ class Api {
   deleteCard(ID) {
     return this._request(`${this._url}/cards/${ID}`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: {
+        authorization: localStorage.getItem('jwt'),
+        'Content-Type': 'application/json',
+      },
     });
   }
 
@@ -52,7 +56,7 @@ class Api {
       method: 'GET',
       headers: {
         authorization: localStorage.getItem('jwt'),
-            'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       },
     });
   }
@@ -60,7 +64,10 @@ class Api {
   setUserInfo(name, about) {
     return this._request(`${this._url}/users/me`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: localStorage.getItem('jwt'),
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         name: name,
         about: about,
@@ -72,12 +79,18 @@ class Api {
     if (state) {
       return this._request(`${this._url}/cards/${ID}/likes`, {
         method: 'PUT',
-        headers: this._headers,
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json',
+        },
       });
     } else {
       return this._request(`${this._url}/cards/${ID}/likes`, {
         method: 'DELETE',
-        headers: this._headers,
+        headers: {
+          authorization: localStorage.getItem('jwt'),
+          'Content-Type': 'application/json',
+        },
       });
     }
   }
@@ -85,21 +98,30 @@ class Api {
   setLike(ID) {
     return this._request(`${this._url}/cards/${ID}/likes`, {
       method: 'PUT',
-      headers: this._headers,
+      headers: {
+        authorization: localStorage.getItem('jwt'),
+        'Content-Type': 'application/json',
+      },
     });
   }
 
   deleteLike(ID) {
     return this._request(`${this._url}/cards/${ID}/likes`, {
       method: 'DELETE',
-      headers: this._headers,
+      headers: {
+        authorization: localStorage.getItem('jwt'),
+        'Content-Type': 'application/json',
+      },
     });
   }
 
   changeAvatar(link) {
     return this._request(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
-      headers: this._headers,
+      headers: {
+        authorization: localStorage.getItem('jwt'),
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         avatar: link,
       }),
@@ -108,11 +130,7 @@ class Api {
 }
 
 export const api = new Api({
-  url: 'http://localhost:3000',
-  headers: {
-    authorization: localStorage.getItem('jwt'),
-        'Content-Type': 'application/json',
-  },
+  url: 'https://igorkuznecov.nomoredomainsrocks.ru/api'
 });
 
 /* export const api = new Api({
