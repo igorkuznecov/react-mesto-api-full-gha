@@ -2,6 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 
 const { PORT = 3000 } = process.env;
+const cors = require('cors');
 const express = require('express');
 
 const app = express();
@@ -10,7 +11,7 @@ const { login, createUser } = require('./controllers/users');
 const authChecker = require('./middlewares/auth');
 const errorHandler = require('./middlewares/error');
 const NotFoundError = require('./errors/not-found-err');
-const cors = require('cors')
+
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 mongoose
@@ -25,7 +26,7 @@ mongoose
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors())
+app.use(cors());
 
 app.use(requestLogger);
 
