@@ -28,7 +28,7 @@ module.exports.findCardById = (req, res, next) => {
 module.exports.createCard = (req, res, next) => {
   const { name, link } = req.body;
   Card.create({ name, link, owner: req.user })
-    .then((card) => res.send(card))
+    .then((card) => res.status(201).send(card))
     .catch((err) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError('Переданы некорректные данные'));
@@ -47,7 +47,7 @@ module.exports.deleteCardById = (req, res, next) => {
         throw new ForbiddenError('Это не ваша карточка');
       }
 
-      Card.deleteOne(card).then(() => Card.find({}).then((cards) => res.send(cards)));
+      return Card.deleteOne(card).then(() => Card.find({}).then((cards) => res.send(cards)));
     })
     .catch((err) => {
       if (err.name === 'CastError') {
