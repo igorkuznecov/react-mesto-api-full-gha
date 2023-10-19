@@ -18,6 +18,12 @@ const userModel = new mongoose.Schema({
   },
   avatar: {
     type: String,
+    validate: {
+      validator(avatar) {
+        validator.isURL(avatar);
+      },
+      message: 'Некорректная ссылка',
+    },
     default:
       'https://pictures.s3.yandex.net/resources/jacques-cousteau_1604399756.png',
   },
@@ -56,10 +62,5 @@ userModel.statics.findUserByCredentials = function (email, password) {
     });
   });
 };
-
-userModel.path('avatar').validate((link) => {
-  const urlRegex = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-/]))?/;
-  return urlRegex.test(link);
-}, 'Некорректная ссылка');
 
 module.exports = mongoose.model('user', userModel);
